@@ -8,7 +8,7 @@ pipeline {
                 bat "mvn clean package -DskipTests"
             }
         }
-        stage('Build Image') {.gitignore
+        stage('Build Image') {
             steps {
                 //sh
                 bat "docker build -t='vinsdocker/selenium-docker' ."
