@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh
-                bat "docker build -t=nal10/selenium-docker ."
+                bat "docker build -t nal10/selenium-docker -t nal10/docker-selenium:${BUILD_NUMBER} ."
             }
         }
         stage('Push Image') {
@@ -20,6 +20,7 @@ pipeline {
                     //sh
 			        bat "docker login --username=${user} --password=${pass}"
 			        bat "docker push nal10/selenium-docker:latest"
+			        bat "docker push nal10/docker-selenium:${BUILD_NUMBER}"
 			    }
             }
         }
